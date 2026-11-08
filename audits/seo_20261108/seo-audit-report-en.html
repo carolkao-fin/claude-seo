@@ -1,0 +1,1500 @@
+﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Social Innovation Platform SEO Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* ================================================================
+   Layout: Sticky sidebar nav + scrollable main, stacks on mobile
+   ================================================================ */
+:root {
+  --bg:        #F7F6F2;
+  --bg-card:   #FFFFFF;
+  --bg-subtle: #F0EEE8;
+  --fg:        #1C1B22;
+  --fg-muted:  #5C5A66;
+  --accent:    #008C7E;
+  --accent-lt: #E0F2EF;
+  --border:    #E2DFDA;
+
+  --c-crit:    #DC2626;
+  --c-crit-bg: #FEF2F2;
+  --c-high:    #EA580C;
+  --c-high-bg: #FFF7ED;
+  --c-med:     #B45309;
+  --c-med-bg:  #FFFBEB;
+  --c-low:     #1D4ED8;
+  --c-low-bg:  #EFF6FF;
+  --c-pos:     #047857;
+  --c-pos-bg:  #ECFDF5;
+
+  --radius:    8px;
+  --shadow:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0F1115;
+    --bg-card:   #1A1D24;
+    --bg-subtle: #22252E;
+    --fg:        #E8E5DF;
+    --fg-muted:  #9A96A8;
+    --accent:    #00BFA8;
+    --accent-lt: #0A2926;
+    --border:    #2D3042;
+    --c-crit:    #F87171;
+    --c-crit-bg: #2A1515;
+    --c-high:    #FB923C;
+    --c-high-bg: #2A1A0A;
+    --c-med:     #FCD34D;
+    --c-med-bg:  #261E0A;
+    --c-low:     #60A5FA;
+    --c-low-bg:  #0D1A2E;
+    --c-pos:     #34D399;
+    --c-pos-bg:  #072115;
+    --shadow:    0 1px 3px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0F1115;
+  --bg-card:   #1A1D24;
+  --bg-subtle: #22252E;
+  --fg:        #E8E5DF;
+  --fg-muted:  #9A96A8;
+  --accent:    #00BFA8;
+  --accent-lt: #0A2926;
+  --border:    #2D3042;
+  --c-crit:    #F87171;
+  --c-crit-bg: #2A1515;
+  --c-high:    #FB923C;
+  --c-high-bg: #2A1A0A;
+  --c-med:     #FCD34D;
+  --c-med-bg:  #261E0A;
+  --c-low:     #60A5FA;
+  --c-low-bg:  #0D1A2E;
+  --c-pos:     #34D399;
+  --c-pos-bg:  #072115;
+  --shadow:    0 1px 3px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* Page shell */
+.page-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+}
+.page-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--accent-lt);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.header-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fg);
+  flex: 1;
+  min-width: 0;
+}
+.header-meta {
+  font-size: 12px;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 32px 24px 64px;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 76px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 8px 12px 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.nav-item:hover, .nav-item.active {
+  background: var(--bg-subtle);
+  color: var(--fg);
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Main content */
+.main { min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+
+/* Score card */
+.score-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.score-ring-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+.score-ring-wrap svg { width: 110px; height: 110px; }
+.score-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-num .n {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--fg);
+}
+.score-num .of {
+  font-size: 11px;
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+.score-label {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--c-crit);
+  margin-bottom: 6px;
+}
+.score-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-bottom: 14px;
+}
+.score-bars { display: flex; flex-direction: column; gap: 7px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.bar-label { color: var(--fg-muted); }
+.bar-track {
+  height: 6px;
+  background: var(--bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: width .4s ease;
+}
+.bar-val {
+  font-weight: 600;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+/* Summary tiles */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.tile .count {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tile .tlabel { font-size: 11px; font-weight: 600; letter-spacing: .05em; color: var(--fg-muted); text-transform: uppercase; }
+.tile.crit { border-top: 3px solid var(--c-crit); }
+.tile.crit .count { color: var(--c-crit); }
+.tile.high { border-top: 3px solid var(--c-high); }
+.tile.high .count { color: var(--c-high); }
+.tile.med { border-top: 3px solid var(--c-med); }
+.tile.med .count { color: var(--c-med); }
+.tile.low { border-top: 3px solid var(--c-low); }
+.tile.low .count { color: var(--c-low); }
+
+/* Section */
+.section { display: flex; flex-direction: column; gap: 16px; }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.section-title { font-size: 18px; font-weight: 700; }
+.section-score {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+}
+
+/* Finding cards */
+.finding {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.finding-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.finding-head:hover { background: var(--bg-subtle); }
+.priority-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pb-crit { background: var(--c-crit-bg); color: var(--c-crit); }
+.pb-high { background: var(--c-high-bg); color: var(--c-high); }
+.pb-med  { background: var(--c-med-bg);  color: var(--c-med);  }
+.pb-low  { background: var(--c-low-bg);  color: var(--c-low);  }
+.pb-pos  { background: var(--c-pos-bg);  color: var(--c-pos);  }
+
+.finding-title {
+  font-weight: 600;
+  font-size: 14px;
+  flex: 1;
+  min-width: 0;
+}
+.finding-chevron {
+  color: var(--fg-muted);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform .2s;
+}
+.finding.open .finding-chevron { transform: rotate(90deg); }
+
+.finding-body {
+  display: none;
+  padding: 0 16px 14px 46px;
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border);
+}
+.finding.open .finding-body { display: block; }
+
+.finding-body p { margin: 8px 0; }
+.finding-body p:first-child { margin-top: 10px; }
+
+.meta-pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.meta-pill {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+.meta-pill strong { color: var(--fg); }
+
+code, .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  background: var(--bg-subtle);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--fg);
+}
+
+/* Action plan */
+.action-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.action-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 90px 90px;
+  gap: 12px;
+  padding: 12px 16px;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.action-row:last-child { border-bottom: none; }
+.action-row.header {
+  background: var(--bg-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 10px 16px;
+}
+.action-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+.action-title { font-weight: 500; color: var(--fg); }
+.action-title .sub { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+.action-effort, .action-impact {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+.effort-low    { color: var(--c-pos); }
+.effort-med    { color: var(--c-med); }
+.effort-high   { color: var(--c-high); }
+.impact-crit   { color: var(--c-crit); }
+.impact-high   { color: var(--c-high); }
+.impact-med    { color: var(--c-med); }
+
+/* Positive findings */
+.positive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pos-item {
+  background: var(--c-pos-bg);
+  border: 1px solid color-mix(in srgb, var(--c-pos) 20%, transparent);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.pos-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.pos-text { color: var(--fg); font-weight: 500; }
+.pos-sub { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+
+/* Footer */
+.report-footer {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+.report-footer a { color: var(--accent); text-decoration: none; }
+.community-block {
+  margin-top: 16px;
+  padding: 14px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--fg);
+}
+.community-block a { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 0 48px;
+  }
+  .sidebar { display: none; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .score-card { grid-template-columns: 1fr; }
+  .score-ring-wrap { margin: 0 auto; }
+  .bar-row { grid-template-columns: 120px 1fr 32px; }
+  .action-row { grid-template-columns: 28px 1fr; }
+  .action-effort, .action-impact { display: none; }
+  .positive-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Sticky header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <span class="site-badge">startup.sme.gov.tw/sitaiwan</span>
+    <div class="header-title">Social Innovation Platform — Full SEO Audit</div>
+    <div class="header-meta">November 8, 2026</div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Sidebar nav -->
+  <nav class="sidebar" aria-label="Sections">
+    <div class="nav-label">Report</div>
+    <a class="nav-item active" href="#overview" onclick="scrollTo(event,'overview')">
+      <span class="nav-dot" style="background:#6366f1"></span>Overview
+    </a>
+    <a class="nav-item" href="#technical" onclick="scrollTo(event,'technical')">
+      <span class="nav-dot" style="background:var(--c-crit)"></span>Technical SEO
+    </a>
+    <a class="nav-item" href="#onpage" onclick="scrollTo(event,'onpage')">
+      <span class="nav-dot" style="background:var(--c-high)"></span>On-Page SEO
+    </a>
+    <a class="nav-item" href="#content" onclick="scrollTo(event,'content')">
+      <span class="nav-dot" style="background:var(--c-med)"></span>Content Quality
+    </a>
+    <a class="nav-item" href="#schema" onclick="scrollTo(event,'schema')">
+      <span class="nav-dot" style="background:var(--c-low)"></span>Schema
+    </a>
+    <a class="nav-item" href="#ai" onclick="scrollTo(event,'ai')">
+      <span class="nav-dot" style="background:var(--accent)"></span>AI Search
+    </a>
+    <a class="nav-item" href="#i18n" onclick="scrollTo(event,'i18n')">
+      <span class="nav-dot" style="background:#8b5cf6"></span>i18n / Hreflang
+    </a>
+    <a class="nav-item" href="#positives" onclick="scrollTo(event,'positives')">
+      <span class="nav-dot" style="background:var(--c-pos)"></span>Strengths
+    </a>
+    <a class="nav-item" href="#actions" onclick="scrollTo(event,'actions')">
+      <span class="nav-dot" style="background:var(--fg-muted)"></span>Action Plan
+    </a>
+    <a class="nav-item" href="#traffic" onclick="scrollTo(event,'traffic')">
+      <span class="nav-dot" style="background:#059669"></span>Traffic Strategy
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- ── OVERVIEW ── -->
+    <section id="overview" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:#ede9fe; color:#6366f1">📊</div>
+        <div class="section-title">SEO Health Score</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-ring-wrap">
+          <svg viewBox="0 0 110 110" fill="none" aria-hidden="true">
+            <circle cx="55" cy="55" r="46" stroke="var(--bg-subtle)" stroke-width="12"/>
+            <circle cx="55" cy="55" r="46"
+              stroke="var(--c-crit)"
+              stroke-width="12"
+              stroke-dasharray="289"
+              stroke-dashoffset="222"
+              stroke-linecap="round"
+              transform="rotate(-90 55 55)"/>
+          </svg>
+          <div class="score-num">
+            <span class="n">23</span>
+            <span class="of">/100</span>
+          </div>
+        </div>
+        <div>
+          <div class="score-label">Critical Risk</div>
+          <div class="score-desc">The site's main domain blocks all crawlers with HTTP 403, preventing indexation. Foundational fixes are required before any on-page optimizations will have effect.</div>
+          <div class="score-bars">
+            <div class="bar-row">
+              <span class="bar-label">Technical SEO</span>
+              <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">15</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">On-Page SEO</span>
+              <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--c-high)"></div></div>
+              <span class="bar-val">15</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Content Quality</span>
+              <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--c-med)"></div></div>
+              <span class="bar-val">40</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Schema / Structured Data</span>
+              <div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">5</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Performance (CWV)</span>
+              <div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--c-high)"></div></div>
+              <span class="bar-val">35</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">AI Search Readiness</span>
+              <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">10</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">Images</span>
+              <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--accent)"></div></div>
+              <span class="bar-val">50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile crit">
+          <div class="count">6</div>
+          <div class="tlabel">Critical</div>
+        </div>
+        <div class="tile high">
+          <div class="count">7</div>
+          <div class="tlabel">High</div>
+        </div>
+        <div class="tile med">
+          <div class="count">6</div>
+          <div class="tlabel">Medium</div>
+        </div>
+        <div class="tile low">
+          <div class="count">4</div>
+          <div class="tlabel">Low</div>
+        </div>
+      </div>
+
+      <!-- Site profile -->
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-pos">Site Profile</span>
+          <span class="finding-title">Site Overview — Social Innovation Platform</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Type:</strong> Government Publisher Portal</span>
+            <span class="meta-pill"><strong>Operator:</strong> SMESA / MOEA Taiwan</span>
+            <span class="meta-pill"><strong>Language:</strong> Chinese (primary) + English</span>
+            <span class="meta-pill"><strong>Mirror:</strong> si.taiwan.gov.tw</span>
+            <span class="meta-pill"><strong>Domain:</strong> sme.gov.tw (high authority)</span>
+          </div>
+          <p>The Social Innovation Platform (社會創新平台) is operated by Taiwan's SMESA under the Ministry of Economic Affairs. It serves as a national directory and resource hub for social innovation organizations, aligned with the UN SDGs.</p>
+          <p><strong>Architecture:</strong> 5 main navigation groups, 21 static pages, plus programmatic pages for organizations (<code>/Home/Org?Fid={id}</code>) and activities (<code>/Home/activity/{id}</code>). The platform uses a JavaScript SPA framework with SSR gaps.</p>
+          <p><strong>Key observation:</strong> The main domain <code>startup.sme.gov.tw/sitaiwan/</code> returns HTTP 403 for all crawler requests, while the mirror <code>si.taiwan.gov.tw</code> partially serves content. This domain split is the most critical SEO vulnerability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECHNICAL SEO ── -->
+    <section id="technical" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-crit-bg); color:var(--c-crit)">⚙️</div>
+        <div class="section-title">Technical SEO</div>
+        <span class="section-score">15 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">Main domain returns HTTP 403 for all bots — Googlebot cannot crawl the site</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><strong>Observation:</strong> Every URL on <code>startup.sme.gov.tw/sitaiwan/</code> returns HTTP 403 Forbidden to automated requests — homepage, all section pages, and all programmatic pages. Googlebot is completely blocked.</p>
+          <p><strong>Impact:</strong> Even if pages were indexed from cached state or the mirror domain, Google cannot re-verify content, discover new pages, or update rankings. Over time, all indexed pages will be dropped from search results.</p>
+          <p><strong>Root cause:</strong> The server likely applies User-Agent filtering or IP-range blocking — an infrastructure firewall rule, WAF policy, or bot-blocking config that was misconfigured to also block Googlebot.</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Fix:</strong> Whitelist Googlebot User-Agent in WAF/firewall rules</span>
+            <span class="meta-pill"><strong>Verify:</strong> Use "Inspect URL" in Google Search Console after fix</span>
+            <span class="meta-pill"><strong>Success signal:</strong> GSC shows successful crawl of homepage</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">robots.txt missing (404) — no crawl policy declared</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>https://startup.sme.gov.tw/sitaiwan/robots.txt</code> returns HTTP 404. Without robots.txt, there is no crawl policy at the path level. Combined with the domain-level 403, crawlers receive no guidance on what is or is not crawlable.</p>
+          <p><strong>Fix:</strong> Create <code>/robots.txt</code> at the domain root with <code>User-agent: *</code>, <code>Allow: /</code>, and a <code>Sitemap:</code> directive pointing to the XML sitemap.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">No XML sitemap — Googlebot cannot discover all pages</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>/sitaiwan/sitemap.xml</code> returns 403. Only an HTML sitemap at <code>/sitaiwan/sitemap</code> exists, listing 21 static URLs — not machine-readable by Googlebot for sitemap purposes.</p>
+          <p>Programmatic pages (organizations at <code>/Home/Org?Fid=*</code> and activities at <code>/Home/activity/*</code>) are not listed anywhere machine-readable. These likely represent hundreds or thousands of pages Google cannot discover.</p>
+          <p><strong>Fix:</strong> Generate a sitemap index with two child sitemaps: static pages and programmatic pages. Include <code>&lt;lastmod&gt;</code> and <code>&lt;changefreq&gt;</code>. Register in GSC and add <code>Sitemap:</code> to robots.txt.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">JavaScript SPA with client-side rendering — content invisible to crawlers</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Listing pages (<code>/Home/org_list</code>, <code>/Home/activity/list</code>) return bare HTML — the org database and activity list are loaded entirely client-side via JS. Unrendered template syntax like <code>{{ language == 'en' ? 'Home' : '回首頁' }}</code> in source confirms the framework (likely Vue.js or Angular) is not SSR-rendering these strings.</p>
+          <p><strong>Impact:</strong> Googlebot sees empty listing pages. The vast majority of indexable content (thousands of org profiles and event pages) may be invisible to search engines.</p>
+          <p><strong>Fix:</strong> Implement SSR or SSG for all public pages. At minimum, use dynamic rendering (pre-rendering) to serve rendered HTML to Googlebot. SSR is the prerequisite for all on-page SEO improvements to have effect.</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Dependency:</strong> Must fix before any other SEO work has effect</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">Duplicate site across two domains with no canonical — severe duplicate content risk</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The same platform content is served on both <code>startup.sme.gov.tw/sitaiwan/</code> and <code>si.taiwan.gov.tw/</code>. Neither domain sets canonical tags pointing to the authoritative version. Google may index both, split link equity, and demote both for duplicate content.</p>
+          <p><strong>Fix:</strong> Choose one canonical domain (recommend <code>startup.sme.gov.tw/sitaiwan/</code>). Implement 301 redirects from the mirror, OR add <code>&lt;link rel="canonical"&gt;</code> on every mirror page pointing to the canonical URL.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">Non-crawlable section headers in navigation — javascript:; links</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The 5 main navigation group headers use <code>href="javascript:;"</code>. These are not crawlable by Googlebot and provide no link equity or crawl signal.</p>
+          <p><strong>Fix:</strong> Point each section header to its primary child page, or implement a proper dropdown that links to real URLs.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">Desktop-only browser recommendation — no mobile optimization declared</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The site footer explicitly recommends "desktop Google Chrome at 1024×768 or higher." Google uses mobile-first indexing — if the site is not mobile-friendly, rankings are penalized. This signals the site was not designed for mobile users.</p>
+          <p><strong>Fix:</strong> Conduct a mobile responsiveness audit across all page types. Ensure tap targets meet 48×48px minimums, text is readable without zooming, and content does not overflow on 390px viewports. Remove the desktop-only recommendation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ON-PAGE SEO ── -->
+    <section id="onpage" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-high-bg); color:var(--c-high)">📝</div>
+        <div class="section-title">On-Page SEO</div>
+        <span class="section-score">15 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">Zero meta descriptions across all pages — search snippets rely on Google auto-generation</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Not a single page on the platform has a <code>&lt;meta name="description"&gt;</code> tag — confirmed across homepage, listing pages, activity pages, and organization pages. Google auto-generates snippets, which are typically less compelling and may show irrelevant text.</p>
+          <p><strong>Fix:</strong> Write unique meta descriptions for all static pages (150–160 chars). For programmatic pages use a template, e.g. for org pages: <code>{org_name} is a Taiwan social innovation organization focused on {sdg_category}. Learn about their social impact, procurement, and contact info.</code></p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Pages affected:</strong> All 21+ static + all programmatic pages</span>
+            <span class="meta-pill"><strong>Effort:</strong> Templated — low per-page cost once SSR is fixed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">Generic page titles — "社會創新平台 | Social Innovation - [Section]" on every page</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>All pages follow the title pattern <code>社會創新平台 | Social Innovation - [Section]</code>. While the event name is included, the title lacks target keywords, geographic modifiers, or action language that would improve SERP CTR.</p>
+          <p><strong>Fix:</strong> Reverse the title structure to lead with the most specific, keyword-rich term. Event pages: <code>2025 台灣 AI 產業年會 | Social Innovation Platform</code>. Org pages: <code>{Org Name} — Social Innovation Org | SMESA</code>. Homepage: <code>Taiwan Social Innovation Platform — SDGs Org Database | SMESA</code>.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">No canonical tags on any page — duplicate URL risk unmanaged</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>No page sets a <code>&lt;link rel="canonical"&gt;</code> tag. This is especially problematic given: (1) the dual-domain issue, (2) query string URLs like <code>/Home/News?Fid=156</code> that could generate parameter variants, and (3) any trailing-slash or www/non-www variants.</p>
+          <p><strong>Fix:</strong> Add self-referencing canonical tags to all pages. For programmatic pages with query strings, canonicalize to the clean URL version. This is a template-level fix applied once to the page framework.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">No Open Graph or Twitter Card tags — poor link sharing appearance</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>No pages have <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, or Twitter Card meta tags. When links are shared on social media (Facebook, LINE, Twitter/X), no preview card is generated — only a plain URL appears.</p>
+          <p><strong>Fix:</strong> Add Open Graph tags to all pages. Use event banners or org logos as <code>og:image</code>. Minimum set: <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, <code>og:url</code>, <code>og:type</code>, <code>og:locale</code> (set to <code>zh_TW</code>). Include <code>og:locale:alternate</code> for English pages.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">No HTML lang attribute on any page — accessibility and SEO signal missing</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The <code>&lt;html&gt;</code> element has no <code>lang</code> attribute. This is both an accessibility issue (screen readers cannot infer language) and an SEO signal — Google uses lang to understand content language for regional targeting.</p>
+          <p><strong>Fix:</strong> Add <code>lang="zh-TW"</code> to the <code>&lt;html&gt;</code> element on Chinese pages and <code>lang="en"</code> on English pages. This is a framework-level fix.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">Missing alt text on key images — homepage explainer image and site logo</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The homepage "What is social innovation?" explainer image has no alt text. The site logo also lacks meaningful alt text in some contexts. Event banner images use filenames (<code>1735531105438.jpg</code>) instead of descriptive text.</p>
+          <p><strong>Fix:</strong> Add descriptive alt text to all meaningful images. Decorative images use <code>alt=""</code>. For event banners, use the event name and date. For the logo, use "Social Innovation Platform — SMESA". For the SDG explainer image, describe what the visualization shows.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">No breadcrumb navigation — shallow site structure signal to Google</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The site uses a flat utility navigation with no contextual breadcrumbs on deep pages. For activity pages like <code>/Home/activity/3280</code>, there is no breadcrumb showing "Home → Activities → 2025 AI Forum". This is a missed opportunity for both UX and SEO.</p>
+          <p><strong>Fix:</strong> Add breadcrumb navigation to all section and detail pages. Pair with BreadcrumbList JSON-LD (see Schema section). This also enables Google breadcrumb SERP features.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTENT QUALITY ── -->
+    <section id="content" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-med-bg); color:var(--c-med)">📄</div>
+        <div class="section-title">Content Quality</div>
+        <span class="section-score">40 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">Homepage statistics showing all zeros — content not loading before render</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The homepage Key Figures section shows 0 for all statistics. Data loads asynchronously via JavaScript and was not rendered server-side.</p>
+          <p><strong>Impact:</strong> These numbers are core E-E-A-T signals showing platform scale. Google sees zeros, undermining credibility. Users seeing zeros on first load lose trust.</p>
+          <p><strong>Fix:</strong> Pre-render these statistics server-side. Embed the latest figures in the HTML as a fallback that JavaScript can then refresh. These numbers should never be zero in the HTML source.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">Duplicate paragraph content on listing pages — verbatim repetition detected</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>On organization database and activity list pages, description paragraphs each appear twice verbatim. This creates on-page duplicate content and inflates content length without adding value.</p>
+          <p><strong>Fix:</strong> Audit all template components for duplicate rendering. The likely cause is a component included twice in the page template. Remove duplicate instances.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">Key policy documents only available as PDFs — content invisible to search</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The Social Innovation Action Plan 2.0 and its English version are only available as PDFs. PDFs perform significantly worse than web pages in SEO. This content — detailing Taiwan national social innovation strategy — has high search potential for researchers, journalists, and international organizations.</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill">社創方案2.0摘要.pdf</span>
+            <span class="meta-pill">Social_Innovation_Action_Plan_2.0_Summary.pdf</span>
+          </div>
+          <p><strong>Fix:</strong> Create web page versions of these documents with proper headings, sections, and anchor links. Keep the PDF download as a secondary option. The web page version will rank for long-tail queries.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">SDGs diagnostic test requires login — gated content blocks organic discovery</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The SDGs diagnostic test requires member login. This popular interactive tool is completely invisible to search engines and unregistered visitors — a significant missed opportunity for organic acquisition.</p>
+          <p><strong>Fix:</strong> Create a public landing page for the diagnostic test with enough SEO content to rank for SDG-related queries. The test itself can remain gated, but the entry page should be indexable with compelling meta tags.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">Low</span>
+          <span class="finding-title">Ended events remain indexed without clear archival strategy</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Past event pages (marked ended) remain fully indexed. While keeping past events is legitimate, there is no clear evergreen content strategy for these pages.</p>
+          <p><strong>Fix:</strong> Add structured data to past event pages using <code>eventStatus: EventScheduled</code> with the past date. Add a "Related upcoming events" section to past event pages to reduce bounce and add internal linking value.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SCHEMA ── -->
+    <section id="schema" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-low-bg); color:var(--c-low)">🏷️</div>
+        <div class="section-title">Schema &amp; Structured Data</div>
+        <span class="section-score">5 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">Zero structured data on the entire site — no JSON-LD found anywhere</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Not a single page implements any form of structured data (JSON-LD, Microdata, or RDFa). This is a significant missed opportunity for a government platform with rich, structured content types.</p>
+          <p><strong>Recommended schema implementations by page type:</strong></p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Homepage:</strong> Organization, WebSite, GovernmentOrganization</span>
+            <span class="meta-pill"><strong>Activity pages:</strong> Event (EventScheduled, startDate, endDate, location)</span>
+            <span class="meta-pill"><strong>Org pages:</strong> Organization or LocalBusiness subtypes</span>
+            <span class="meta-pill"><strong>All pages:</strong> BreadcrumbList, WebPage</span>
+          </div>
+          <p><strong>Example for event pages (JSON-LD):</strong></p>
+          <p><code>{"@type":"Event","name":"2025台灣AI產業年會","startDate":"2025-01-22","location":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"台北市","streetAddress":"羅斯福路四段85號"}},"organizer":{"@type":"Organization","name":"台灣人工智慧實驗室"},"eventStatus":"https://schema.org/EventScheduled"}</code></p>
+          <p>Implementing Event schema enables Google Event rich results in SERP — a direct traffic driver for this platform type.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">Government organization entity not declared — Google Knowledge Panel opportunity missed</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The platform has no <code>GovernmentOrganization</code> or <code>Organization</code> schema declaring publisher identity. Without this, Google cannot confidently associate the platform with its entity, missing a potential Knowledge Panel.</p>
+          <p><strong>Fix:</strong> Add on the homepage:</p>
+          <p><code>{"@type":"GovernmentOrganization","name":"經濟部中小及新創企業署","alternateName":"SMESA","url":"https://startup.sme.gov.tw/","parentOrganization":{"@type":"GovernmentOrganization","name":"經濟部"},"contactPoint":{"@type":"ContactPoint","telephone":"+886-2-2586-5000","email":"sitaiwan@sme.gov.tw"},"sameAs":["https://www.sme.gov.tw/"]}</code></p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">BreadcrumbList schema missing — breadcrumb SERP feature unavailable</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>No BreadcrumbList structured data exists. Combined with absent visual breadcrumb navigation, Google cannot display breadcrumbs in search results. Breadcrumbs in SERP improve CTR by showing content hierarchy.</p>
+          <p><strong>Fix:</strong> Implement BreadcrumbList JSON-LD on all section and detail pages, in sync with the visual breadcrumb. For an activity page: <code>Home → Activity Board → [Event Name]</code>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI SEARCH ── -->
+    <section id="ai" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--accent-lt); color:var(--accent)">🤖</div>
+        <div class="section-title">AI Search Readiness (GEO)</div>
+        <span class="section-score">10 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Critical</span>
+          <span class="finding-title">AI crawlers blocked — Googlebot and all AI agents cannot access any content</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The same HTTP 403 blocking Googlebot also blocks AI content crawlers (GPTBot, ClaudeBot, Applebot, PerplexityBot, etc.). The platform content is entirely absent from AI-generated answers about Taiwan social innovation, SDGs, and social enterprise.</p>
+          <p><strong>Impact:</strong> When users ask ChatGPT, Perplexity, Google AI Overviews, or Claude about Taiwan social innovation, this platform does not appear in cited sources.</p>
+          <p><strong>Fix:</strong> After resolving the 403 issue, explicitly allow beneficial AI crawlers in robots.txt while blocking only aggressive or unknown bots.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">No llms.txt file — platform cannot declare itself to AI agents</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>/llms.txt</code> does not exist on the domain. This emerging standard lets AI agents understand what a site is about and how to use its content. For a government platform that wants to be cited by AI systems, this is a low-effort, high-signal addition.</p>
+          <p><strong>Fix:</strong> Create <code>https://startup.sme.gov.tw/llms.txt</code> with a brief description of the platform, its data types, intended use, and licensing contact. Example:</p>
+          <p><code># Social Innovation Platform — Taiwan<br>社會創新平台 is operated by SMESA (Ministry of Economic Affairs, Taiwan). It provides a database of social innovation organizations, events, and resources aligned with the UN SDGs.<br><br>## Organization database<br>Detailed profiles of 1000+ social innovation organizations in Taiwan.<br><br>## Allowed uses<br>Citation, research, journalism, non-commercial use.</code></p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">No Markdown delivery endpoint — AI agents prefer structured text formats</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The platform serves only HTML (or no content at all due to 403). AI crawlers that prefer clean Markdown or JSON representations cannot process this site efficiently.</p>
+          <p><strong>Fix:</strong> Create <code>/llms-full.txt</code> or implement <code>Accept: text/markdown</code> content negotiation on key pages. Alternatively, expose a public JSON API endpoint for the organization database that AI agents can reference.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── I18N / HREFLANG ── -->
+    <section id="i18n" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:#f3e8ff; color:#8b5cf6">🌐</div>
+        <div class="section-title">Internationalization / Hreflang</div>
+        <span class="section-score">10 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High</span>
+          <span class="finding-title">No hreflang implementation — bilingual site invisible in English search results</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The platform has both Chinese (zh-TW) and English content, but zero hreflang tags exist on any page. Without hreflang, Google serves the same URL to both Chinese and English searchers, and the English version may be suppressed in English-language results.</p>
+          <p><strong>Fix:</strong> Determine whether a parallel English URL structure exists (e.g. <code>/sitaiwan/en/</code>). If so, implement hreflang on all bilingual pages:</p>
+          <p><code>&lt;link rel="alternate" hreflang="zh-TW" href="https://startup.sme.gov.tw/sitaiwan/Home/activity/3280"&gt;</code><br><code>&lt;link rel="alternate" hreflang="en" href="https://startup.sme.gov.tw/sitaiwan/en/Home/activity/3280"&gt;</code><br><code>&lt;link rel="alternate" hreflang="x-default" href="https://startup.sme.gov.tw/sitaiwan/Home/activity/3280"&gt;</code></p>
+          <p>If no parallel English URL structure exists, create one. The platform international ambitions (APSI Summit, overseas expansion) make English SEO significant.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Medium</span>
+          <span class="finding-title">Vue/Angular template strings visible in HTML source — language not resolving at render time</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Navigation labels contain unrendered template expressions: <code>{{ language == 'en' ? 'Home' : '回首頁' }}</code>. These are visible in source as raw JS template syntax, indicating the language detection logic is running client-side rather than being resolved at the server or SSR stage.</p>
+          <p><strong>Impact:</strong> Crawlers see template syntax as literal text content, polluting the crawled text with code artifacts and signaling unreliable content.</p>
+          <p><strong>Fix:</strong> Ensure all language-conditional strings are resolved during SSR before the HTML is sent to the client. Template expressions should never appear in delivered HTML.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">Low</span>
+          <span class="finding-title">Query string URL for news section — /Home/News?Fid=156 not SEO-friendly</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>The news category navigation item uses <code>/Home/News?Fid=156</code> rather than a clean URL like <code>/Home/news/social-innovation</code>. Query string URLs are crawlable but less SEO-friendly and harder to manage for canonicalization.</p>
+          <p><strong>Fix:</strong> Map query string parameters to clean URL paths where possible. Implement URL rewriting on the server. If clean URLs are not feasible, ensure canonical tags explicitly address each query string variation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STRENGTHS ── -->
+    <section id="positives" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-pos-bg); color:var(--c-pos)">✅</div>
+        <div class="section-title">Strengths to Preserve</div>
+      </div>
+
+      <div class="positive-grid">
+        <div class="pos-item">
+          <span class="pos-icon">🔒</span>
+          <div>
+            <div class="pos-text">HTTPS Enabled</div>
+            <div class="pos-sub">All URLs served over HTTPS with no mixed-content issues detected</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">♿</span>
+          <div>
+            <div class="pos-text">AA Accessibility Certified</div>
+            <div class="pos-sub">Platform holds Taiwan government AA accessibility certification from moda.gov.tw</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">🏛️</span>
+          <div>
+            <div class="pos-text">High-Authority Government Domain</div>
+            <div class="pos-sub">sme.gov.tw carries significant domain authority and trust signals with Google</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">⌨️</span>
+          <div>
+            <div class="pos-text">Skip Navigation Link</div>
+            <div class="pos-sub">Proper #mainContent skip link implemented — both accessibility and technical SEO best practice</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📋</span>
+          <div>
+            <div class="pos-text">HTML Sitemap Available</div>
+            <div class="pos-sub">Human-readable sitemap at /sitaiwan/sitemap lists all 21 primary pages in organized sections</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📜</span>
+          <div>
+            <div class="pos-text">Clear Content License</div>
+            <div class="pos-sub">CC BY-NC-ND 3.0 Taiwan license prominently displayed — signals content reuse policy to AI and crawlers</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">🌏</span>
+          <div>
+            <div class="pos-text">International Outreach Content</div>
+            <div class="pos-sub">APSI Summit section and international partnership content creates natural backlink opportunities</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📞</span>
+          <div>
+            <div class="pos-text">Comprehensive Contact Information</div>
+            <div class="pos-sub">Multiple contact channels in footer — strong E-E-A-T signal when paired with schema markup</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACTION PLAN ── -->
+    <section id="actions" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--bg-subtle); color:var(--fg)">🎯</div>
+        <div class="section-title">Prioritized Action Plan</div>
+      </div>
+
+      <p style="font-size:13px;color:var(--fg-muted);margin-bottom:4px;">Actions are sequenced by dependency — later items depend on earlier ones for full effect. Fix the crawlability stack first; on-page and content work is wasted while bots are blocked.</p>
+
+      <div class="action-table">
+        <div class="action-row header">
+          <div>#</div>
+          <div>Action</div>
+          <div style="text-align:center">Effort</div>
+          <div style="text-align:center">Impact</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">01</div>
+          <div>
+            <div class="action-title">Fix HTTP 403 — whitelist Googlebot in WAF/firewall</div>
+            <div class="action-title sub">Unblocks all subsequent SEO work. Verify with Google Search Console Inspect URL.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-crit">Critical</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">02</div>
+          <div>
+            <div class="action-title">Implement SSR for all public pages</div>
+            <div class="action-title sub">Prerequisite for meta tags, structured data, and content to be indexed. Resolve template placeholder rendering.</div>
+          </div>
+          <div class="action-effort effort-high">High</div>
+          <div class="action-impact impact-crit">Critical</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">03</div>
+          <div>
+            <div class="action-title">Resolve dual-domain duplicate content</div>
+            <div class="action-title sub">301 redirect si.taiwan.gov.tw to startup.sme.gov.tw/sitaiwan/, or add canonical tags on mirror.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-crit">Critical</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">04</div>
+          <div>
+            <div class="action-title">Create robots.txt + XML sitemap index</div>
+            <div class="action-title sub">Include all static and programmatic URLs. Register sitemap in GSC. Add Sitemap: directive.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">05</div>
+          <div>
+            <div class="action-title">Add meta descriptions to all pages (templated)</div>
+            <div class="action-title sub">Write templates for org and activity page types. Write unique descriptions for 21 static pages.</div>
+          </div>
+          <div class="action-effort effort-med">Med</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">06</div>
+          <div>
+            <div class="action-title">Add html lang, canonical, and Open Graph tags</div>
+            <div class="action-title sub">Framework-level fixes applied to all page templates simultaneously.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">07</div>
+          <div>
+            <div class="action-title">Implement JSON-LD: Event, Organization, BreadcrumbList</div>
+            <div class="action-title sub">Event schema on activity pages enables Google Event rich results. GovernmentOrganization on homepage.</div>
+          </div>
+          <div class="action-effort effort-med">Med</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">08</div>
+          <div>
+            <div class="action-title">Implement hreflang for zh-TW / en language targeting</div>
+            <div class="action-title sub">Create parallel English URL structure if it does not exist. Add hreflang on all bilingual pages.</div>
+          </div>
+          <div class="action-effort effort-high">High</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">09</div>
+          <div>
+            <div class="action-title">Rewrite title tag templates — keyword-first structure</div>
+            <div class="action-title sub">Lead with specific entity name, add geographic modifier, end with brand. Boosts CTR from SERP.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-med">Med</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">10</div>
+          <div>
+            <div class="action-title">Create llms.txt + allow AI crawlers in robots.txt</div>
+            <div class="action-title sub">Enables citation by ChatGPT, Perplexity, Google AI Overviews for Taiwan social innovation queries.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-med">Med</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">11</div>
+          <div>
+            <div class="action-title">Fix image alt texts across all page types</div>
+            <div class="action-title sub">Priority: homepage explainer image, event banners, logo. Use descriptive text, not filenames.</div>
+          </div>
+          <div class="action-effort effort-low">Low</div>
+          <div class="action-impact impact-med">Med</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">12</div>
+          <div>
+            <div class="action-title">Pre-render statistics server-side + remove duplicate paragraphs</div>
+            <div class="action-title sub">Homepage key figures should never be zero in HTML. Fix template duplication on listing pages.</div>
+          </div>
+          <div class="action-effort effort-med">Med</div>
+          <div class="action-impact impact-med">Med</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">13</div>
+          <div>
+            <div class="action-title">Create web pages for key PDF documents</div>
+            <div class="action-title sub">Social Innovation Action Plan 2.0 (Chinese + English) as proper web content. High long-tail search value.</div>
+          </div>
+          <div class="action-effort effort-med">Med</div>
+          <div class="action-impact impact-med">Med</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">14</div>
+          <div>
+            <div class="action-title">Mobile responsiveness audit + remove desktop-only recommendation</div>
+            <div class="action-title sub">Google mobile-first indexing requires full mobile compatibility. Test all page types on 390px viewport.</div>
+          </div>
+          <div class="action-effort effort-high">High</div>
+          <div class="action-impact impact-high">High</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRAFFIC STRATEGIES ── -->
+    <section id="traffic" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-pos-bg); color:var(--c-pos)">📈</div>
+        <div class="section-title">Traffic Growth Strategies</div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">Prerequisites</span>
+          <span class="finding-title">Layer 1: Fix Technical Issues First (prerequisite for all traffic strategies)</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>While Googlebot is still blocked, no content optimization can have effect. These steps must be completed in order:</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Step 1</strong> Remove HTTP 403 → let Google crawl the site</span>
+            <span class="meta-pill"><strong>Step 2</strong> Implement SSR → let Google see database content</span>
+            <span class="meta-pill"><strong>Step 3</strong> Build XML Sitemap → tell Google which pages exist</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">High Priority</span>
+          <span class="finding-title">Search Traffic — Largest source, Event Schema can lift CTR 20–40%</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <div class="action-table" style="margin-top:10px">
+            <div class="action-row header"><div>Strategy</div><div>Expected Outcome</div></div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">Add Event Schema to every activity page</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">Google SERP shows event cards, CTR up 20–40%</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">Add meta descriptions to org pages</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">More compelling search snippets, significant CTR lift</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">Convert policy PDFs to web pages</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">Long-tail keywords like "Taiwan social innovation", "SDGs organizations" can rank</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">Create dedicated pages for each SDG goal</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">e.g. "SDG 1 No Poverty Taiwan organizations" → large long-tail volume</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">Build category directory SEO pages</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">Create indexable category pages by SDG, county/city, and industry</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">Emerging Channel</span>
+          <span class="finding-title">AI Search Traffic — ChatGPT / Perplexity / Google AI Overviews completely absent right now</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>Add <code>llms.txt</code> + allow AI crawlers (GPTBot, PerplexityBot). When users ask "What social innovation organizations are in Taiwan?", this platform will then appear in AI-generated answer citations.</p>
+          <p>Currently all AI crawlers are blocked by HTTP 403. After removing the 403, simply add <code>llms.txt</code> and allow AI crawlers in robots.txt to start being cited by AI systems.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">International</span>
+          <span class="finding-title">English International Traffic — hreflang + APSI Summit English SEO</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><strong>Short-term:</strong> Add hreflang tags (zh-TW / en) so English searchers find the English version.</p>
+          <p><strong>Mid-term:</strong> English SEO for APSI Summit content → attract SE Asia and Japan/Korea social innovation researchers; English web version of SDG reports → attract citations from international research institutions, NGOs, journalists.</p>
+          <p><strong>Long-term:</strong> Proactively apply for resource page citations from UNDP, UN SDG Hub; publish annual Taiwan Social Innovation Ecosystem Report → media and academic citations create natural backlinks.</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">Social Traffic</span>
+          <span class="finding-title">Social Sharing Traffic — Open Graph tags are the quickest win</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>After adding Open Graph tags, sharing to Facebook / LINE will show preview cards (currently sharing shows only a bare URL). This is a one-time frontend template change that immediately affects all pages.</p>
+          <p>Activity pages can add a "Share this event" button to reduce sharing friction and expand social reach.</p>
+        </div>
+      </div>
+
+      <div class="finding open">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-pos">Quick Wins</span>
+          <span class="finding-title">Top 3 fastest wins — can be launched within 2 weeks</span>
+          <span class="finding-chevron">▼</span>
+        </div>
+        <div class="finding-body">
+          <div class="action-table" style="margin-top:10px">
+            <div class="action-row header"><div>#</div><div>Action</div><div>Expected Outcome</div><div>Timeline</div></div>
+            <div class="action-row">
+              <div class="action-num">1</div>
+              <div><div class="action-title">Remove 403 block</div><div class="action-title sub">Engineer configures firewall rule</div></div>
+              <div class="action-impact impact-crit">Google re-crawls within 2 weeks</div>
+              <div class="action-effort effort-low">Immediate</div>
+            </div>
+            <div class="action-row">
+              <div class="action-num">2</div>
+              <div><div class="action-title">Add meta descriptions</div><div class="action-title sub">Content team can execute</div></div>
+              <div class="action-impact impact-high">Direct SERP CTR improvement</div>
+              <div class="action-effort effort-low">1 week</div>
+            </div>
+            <div class="action-row">
+              <div class="action-num">3</div>
+              <div><div class="action-title">Add Open Graph tags</div><div class="action-title sub">One-time frontend template change</div></div>
+              <div class="action-impact impact-high">All pages immediately get social preview cards</div>
+              <div class="action-effort effort-low">1 week</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="report-footer">
+      <div>Report generated by Claude Code · <a href="https://startup.sme.gov.tw/sitaiwan/" target="_blank" rel="noopener">startup.sme.gov.tw/sitaiwan/</a> · November 8, 2026</div>
+      <div style="margin-top:4px;font-size:11px;">Analysis based on direct HTTP probes, Google Search index data, and mirror-domain content inspection (si.taiwan.gov.tw). Performance scores are estimated due to HTTP 403 blocking direct CWV measurement.</div>
+      <div class="community-block">
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        Built by agricidaniel. Join the AI Marketing Hub community<br>
+        🆓 Free → <a href="https://www.skool.com/ai-marketing-hub" target="_blank" rel="noopener">skool.com/ai-marketing-hub</a> &nbsp;|&nbsp;
+        ⚡ Pro → <a href="https://www.skool.com/ai-marketing-hub-pro" target="_blank" rel="noopener">skool.com/ai-marketing-hub-pro</a><br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function toggle(head) {
+  head.closest('.finding').classList.toggle('open');
+}
+
+function scrollTo(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+}
+
+// Highlight active nav on scroll
+const sections = ['overview','technical','onpage','content','schema','ai','i18n','positives','actions','traffic'];
+const navItems = document.querySelectorAll('.nav-item');
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) obs.observe(el);
+});
+
+// Open first finding in overview by default
+document.querySelector('.finding .finding-head')?.click();
+</script>
+
+</body></html>
