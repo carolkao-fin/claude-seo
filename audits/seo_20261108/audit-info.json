@@ -1,0 +1,15 @@
+﻿{
+    "url":  "https://startup.sme.gov.tw/sitaiwan/",
+    "critical":  6,
+    "high":  7,
+    "medium":  6,
+    "site_name":  "社會創新平台",
+    "date":  "2026-11-08",
+    "files":  [
+                  "seo-audit-report-zh.html",
+                  "SEO報告_社會創新平台.docx",
+                  "SEO_Report_SocialInnovation_Platform_EN.docx"
+              ],
+    "score":  23,
+    "low":  4
+}
