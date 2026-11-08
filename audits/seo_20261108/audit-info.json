@@ -12,5 +12,9 @@
                   "SEO_Report_SocialInnovation_Platform_EN.docx"
               ],
     "score":  23,
-    "low":  4
+    "low":  4,
+    "artifacts":  {
+        "zh":  "https://claude.ai/artifact/5FugDxSgRAn2PmV5mqeUVy",
+        "en":  "https://claude.ai/artifact/KYk9rYp4EKChwdeopiRDXn"
+    }
 }

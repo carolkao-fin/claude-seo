@@ -16,9 +16,9 @@ audits/
 
 ## 稽核記錄
 
-| 資料夾 | 網站 | 分數 | 嚴重 | 高 | 中 | 低 |
-|--------|------|------|------|----|----|----|
-| [seo_20261108](audits/seo_20261108/) | startup.sme.gov.tw/sitaiwan/ 社會創新平台 | 23/100 | 6 | 7 | 6 | 4 |
+| 資料夾 | 網站 | 分數 | 嚴重 | 高 | 中 | 低 | 互動報告 |
+|--------|------|------|------|----|----|----|----------|
+| [seo_20261108](audits/seo_20261108/) | startup.sme.gov.tw/sitaiwan/ 社會創新平台 | 23/100 | 6 | 7 | 6 | 4 | [中文](https://claude.ai/artifact/5FugDxSgRAn2PmV5mqeUVy) · [EN](https://claude.ai/artifact/KYk9rYp4EKChwdeopiRDXn) |
 
 ## 使用方式
 
