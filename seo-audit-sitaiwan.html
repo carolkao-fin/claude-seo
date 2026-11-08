@@ -1,0 +1,1500 @@
+﻿<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>社會創新平台 SEO Audit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+<style>
+/* ================================================================
+   Layout: Sticky sidebar nav + scrollable main, stacks on mobile
+   ================================================================ */
+:root {
+  --bg:        #F7F6F2;
+  --bg-card:   #FFFFFF;
+  --bg-subtle: #F0EEE8;
+  --fg:        #1C1B22;
+  --fg-muted:  #5C5A66;
+  --accent:    #008C7E;
+  --accent-lt: #E0F2EF;
+  --border:    #E2DFDA;
+
+  --c-crit:    #DC2626;
+  --c-crit-bg: #FEF2F2;
+  --c-high:    #EA580C;
+  --c-high-bg: #FFF7ED;
+  --c-med:     #B45309;
+  --c-med-bg:  #FFFBEB;
+  --c-low:     #1D4ED8;
+  --c-low-bg:  #EFF6FF;
+  --c-pos:     #047857;
+  --c-pos-bg:  #ECFDF5;
+
+  --radius:    8px;
+  --shadow:    0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #0F1115;
+    --bg-card:   #1A1D24;
+    --bg-subtle: #22252E;
+    --fg:        #E8E5DF;
+    --fg-muted:  #9A96A8;
+    --accent:    #00BFA8;
+    --accent-lt: #0A2926;
+    --border:    #2D3042;
+    --c-crit:    #F87171;
+    --c-crit-bg: #2A1515;
+    --c-high:    #FB923C;
+    --c-high-bg: #2A1A0A;
+    --c-med:     #FCD34D;
+    --c-med-bg:  #261E0A;
+    --c-low:     #60A5FA;
+    --c-low-bg:  #0D1A2E;
+    --c-pos:     #34D399;
+    --c-pos-bg:  #072115;
+    --shadow:    0 1px 3px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:        #0F1115;
+  --bg-card:   #1A1D24;
+  --bg-subtle: #22252E;
+  --fg:        #E8E5DF;
+  --fg-muted:  #9A96A8;
+  --accent:    #00BFA8;
+  --accent-lt: #0A2926;
+  --border:    #2D3042;
+  --c-crit:    #F87171;
+  --c-crit-bg: #2A1515;
+  --c-high:    #FB923C;
+  --c-high-bg: #2A1A0A;
+  --c-med:     #FCD34D;
+  --c-med-bg:  #261E0A;
+  --c-low:     #60A5FA;
+  --c-low-bg:  #0D1A2E;
+  --c-pos:     #34D399;
+  --c-pos-bg:  #072115;
+  --shadow:    0 1px 3px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* Page shell */
+.page-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 20px 0;
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 10;
+}
+.page-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.site-badge {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  background: var(--accent-lt);
+  color: var(--accent);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.header-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--fg);
+  flex: 1;
+  min-width: 0;
+}
+.header-meta {
+  font-size: 12px;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+.layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 32px;
+  padding: 32px 24px 64px;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 76px);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.nav-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 8px 12px 4px;
+}
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--fg-muted);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .12s, color .12s;
+}
+.nav-item:hover, .nav-item.active {
+  background: var(--bg-subtle);
+  color: var(--fg);
+}
+.nav-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Main content */
+.main { min-width: 0; display: flex; flex-direction: column; gap: 32px; }
+
+/* Score card */
+.score-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+}
+.score-ring-wrap {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  flex-shrink: 0;
+}
+.score-ring-wrap svg { width: 110px; height: 110px; }
+.score-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.score-num .n {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--fg);
+}
+.score-num .of {
+  font-size: 11px;
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+.score-label {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--c-crit);
+  margin-bottom: 6px;
+}
+.score-desc {
+  font-size: 13px;
+  color: var(--fg-muted);
+  margin-bottom: 14px;
+}
+.score-bars { display: flex; flex-direction: column; gap: 7px; }
+.bar-row {
+  display: grid;
+  grid-template-columns: 150px 1fr 32px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.bar-label { color: var(--fg-muted); }
+.bar-track {
+  height: 6px;
+  background: var(--bg-subtle);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--accent);
+  transition: width .4s ease;
+}
+.bar-val {
+  font-weight: 600;
+  color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+
+/* Summary tiles */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.tile {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.tile .count {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.tile .tlabel { font-size: 11px; font-weight: 600; letter-spacing: .05em; color: var(--fg-muted); text-transform: uppercase; }
+.tile.crit { border-top: 3px solid var(--c-crit); }
+.tile.crit .count { color: var(--c-crit); }
+.tile.high { border-top: 3px solid var(--c-high); }
+.tile.high .count { color: var(--c-high); }
+.tile.med { border-top: 3px solid var(--c-med); }
+.tile.med .count { color: var(--c-med); }
+.tile.low { border-top: 3px solid var(--c-low); }
+.tile.low .count { color: var(--c-low); }
+
+/* Section */
+.section { display: flex; flex-direction: column; gap: 16px; }
+.section-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.section-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.section-title { font-size: 18px; font-weight: 700; }
+.section-score {
+  margin-left: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 2px 10px;
+  border-radius: 20px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+}
+
+/* Finding cards */
+.finding {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.finding-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.finding-head:hover { background: var(--bg-subtle); }
+.priority-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.pb-crit { background: var(--c-crit-bg); color: var(--c-crit); }
+.pb-high { background: var(--c-high-bg); color: var(--c-high); }
+.pb-med  { background: var(--c-med-bg);  color: var(--c-med);  }
+.pb-low  { background: var(--c-low-bg);  color: var(--c-low);  }
+.pb-pos  { background: var(--c-pos-bg);  color: var(--c-pos);  }
+
+.finding-title {
+  font-weight: 600;
+  font-size: 14px;
+  flex: 1;
+  min-width: 0;
+}
+.finding-chevron {
+  color: var(--fg-muted);
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  transition: transform .2s;
+}
+.finding.open .finding-chevron { transform: rotate(90deg); }
+
+.finding-body {
+  display: none;
+  padding: 0 16px 14px 46px;
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.65;
+  border-top: 1px solid var(--border);
+}
+.finding.open .finding-body { display: block; }
+
+.finding-body p { margin: 8px 0; }
+.finding-body p:first-child { margin-top: 10px; }
+
+.meta-pill-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 4px; }
+.meta-pill {
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  color: var(--fg-muted);
+  font-weight: 500;
+}
+.meta-pill strong { color: var(--fg); }
+
+code, .mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  background: var(--bg-subtle);
+  padding: 1px 5px;
+  border-radius: 3px;
+  color: var(--fg);
+}
+
+/* Action plan */
+.action-table {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.action-row {
+  display: grid;
+  grid-template-columns: 28px 1fr 90px 90px;
+  gap: 12px;
+  padding: 12px 16px;
+  align-items: start;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+.action-row:last-child { border-bottom: none; }
+.action-row.header {
+  background: var(--bg-subtle);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  padding: 10px 16px;
+}
+.action-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-muted);
+  margin-top: 2px;
+}
+.action-title { font-weight: 500; color: var(--fg); }
+.action-title .sub { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+.action-effort, .action-impact {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 4px;
+  margin-top: 2px;
+}
+.effort-low    { color: var(--c-pos); }
+.effort-med    { color: var(--c-med); }
+.effort-high   { color: var(--c-high); }
+.impact-crit   { color: var(--c-crit); }
+.impact-high   { color: var(--c-high); }
+.impact-med    { color: var(--c-med); }
+
+/* Positive findings */
+.positive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+.pos-item {
+  background: var(--c-pos-bg);
+  border: 1px solid color-mix(in srgb, var(--c-pos) 20%, transparent);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.pos-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.pos-text { color: var(--fg); font-weight: 500; }
+.pos-sub { font-size: 12px; color: var(--fg-muted); margin-top: 2px; }
+
+/* Footer */
+.report-footer {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--fg-muted);
+  line-height: 1.8;
+}
+.report-footer a { color: var(--accent); text-decoration: none; }
+.community-block {
+  margin-top: 16px;
+  padding: 14px;
+  background: var(--bg-subtle);
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--fg);
+}
+.community-block a { color: var(--accent); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 20px 0 48px;
+  }
+  .sidebar { display: none; }
+  .tiles { grid-template-columns: repeat(2, 1fr); }
+  .score-card { grid-template-columns: 1fr; }
+  .score-ring-wrap { margin: 0 auto; }
+  .bar-row { grid-template-columns: 120px 1fr 32px; }
+  .action-row { grid-template-columns: 28px 1fr; }
+  .action-effort, .action-impact { display: none; }
+  .positive-grid { grid-template-columns: 1fr; }
+}
+</style>
+
+<!-- Sticky header -->
+<header class="page-header">
+  <div class="page-header-inner">
+    <span class="site-badge">startup.sme.gov.tw/sitaiwan</span>
+    <div class="header-title">社會創新平台 — Full SEO Audit</div>
+    <div class="header-meta">November 8, 2026</div>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Sidebar nav -->
+  <nav class="sidebar" aria-label="Sections">
+    <div class="nav-label">報告</div>
+    <a class="nav-item active" href="#overview" onclick="scrollTo(event,'overview')">
+      <span class="nav-dot" style="background:#6366f1"></span>總覽
+    </a>
+    <a class="nav-item" href="#technical" onclick="scrollTo(event,'technical')">
+      <span class="nav-dot" style="background:var(--c-crit)"></span>技術 SEO
+    </a>
+    <a class="nav-item" href="#onpage" onclick="scrollTo(event,'onpage')">
+      <span class="nav-dot" style="background:var(--c-high)"></span>頁面優化
+    </a>
+    <a class="nav-item" href="#content" onclick="scrollTo(event,'content')">
+      <span class="nav-dot" style="background:var(--c-med)"></span>內容品質
+    </a>
+    <a class="nav-item" href="#schema" onclick="scrollTo(event,'schema')">
+      <span class="nav-dot" style="background:var(--c-low)"></span>結構化資料
+    </a>
+    <a class="nav-item" href="#ai" onclick="scrollTo(event,'ai')">
+      <span class="nav-dot" style="background:var(--accent)"></span>AI 搜尋
+    </a>
+    <a class="nav-item" href="#i18n" onclick="scrollTo(event,'i18n')">
+      <span class="nav-dot" style="background:#8b5cf6"></span>多語系
+    </a>
+    <a class="nav-item" href="#positives" onclick="scrollTo(event,'positives')">
+      <span class="nav-dot" style="background:var(--c-pos)"></span>優勢
+    </a>
+    <a class="nav-item" href="#actions" onclick="scrollTo(event,'actions')">
+      <span class="nav-dot" style="background:var(--fg-muted)"></span>行動計畫
+    </a>
+    <a class="nav-item" href="#traffic" onclick="scrollTo(event,'traffic')">
+      <span class="nav-dot" style="background:#059669"></span>流量策略
+    </a>
+  </nav>
+
+  <!-- Main -->
+  <main class="main">
+
+    <!-- ── OVERVIEW ── -->
+    <section id="overview" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:#ede9fe; color:#6366f1">📊</div>
+        <div class="section-title">SEO 健康分數</div>
+      </div>
+
+      <div class="score-card">
+        <div class="score-ring-wrap">
+          <svg viewBox="0 0 110 110" fill="none" aria-hidden="true">
+            <circle cx="55" cy="55" r="46" stroke="var(--bg-subtle)" stroke-width="12"/>
+            <circle cx="55" cy="55" r="46"
+              stroke="var(--c-crit)"
+              stroke-width="12"
+              stroke-dasharray="289"
+              stroke-dashoffset="222"
+              stroke-linecap="round"
+              transform="rotate(-90 55 55)"/>
+          </svg>
+          <div class="score-num">
+            <span class="n">23</span>
+            <span class="of">/100</span>
+          </div>
+        </div>
+        <div>
+          <div class="score-label">嚴重風險</div>
+          <div class="score-desc">主網域以 HTTP 403 封鎖所有爬蟲，整個網站皆無法被索引。必須先完成基礎修復，頁面優化才有意義。</div>
+          <div class="score-bars">
+            <div class="bar-row">
+              <span class="bar-label">技術 SEO</span>
+              <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">15</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">頁面優化</span>
+              <div class="bar-track"><div class="bar-fill" style="width:15%;background:var(--c-high)"></div></div>
+              <span class="bar-val">15</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">內容品質</span>
+              <div class="bar-track"><div class="bar-fill" style="width:40%;background:var(--c-med)"></div></div>
+              <span class="bar-val">40</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">結構化資料</span>
+              <div class="bar-track"><div class="bar-fill" style="width:5%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">5</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">效能 (CWV)</span>
+              <div class="bar-track"><div class="bar-fill" style="width:35%;background:var(--c-high)"></div></div>
+              <span class="bar-val">35</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">AI 搜尋整備度</span>
+              <div class="bar-track"><div class="bar-fill" style="width:10%;background:var(--c-crit)"></div></div>
+              <span class="bar-val">10</span>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">圖片</span>
+              <div class="bar-track"><div class="bar-fill" style="width:50%;background:var(--accent)"></div></div>
+              <span class="bar-val">50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile crit">
+          <div class="count">6</div>
+          <div class="tlabel">嚴重</div>
+        </div>
+        <div class="tile high">
+          <div class="count">7</div>
+          <div class="tlabel">高</div>
+        </div>
+        <div class="tile med">
+          <div class="count">6</div>
+          <div class="tlabel">中</div>
+        </div>
+        <div class="tile low">
+          <div class="count">4</div>
+          <div class="tlabel">低</div>
+        </div>
+      </div>
+
+      <!-- Site profile -->
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-pos">網站概況</span>
+          <span class="finding-title">網站概況 — 社會創新平台</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>類型：</strong>政府出版入口網</span>
+            <span class="meta-pill"><strong>主管機關：</strong>經濟部中小及新創企業署</span>
+            <span class="meta-pill"><strong>語言：</strong>繁體中文（主）+ 英文</span>
+            <span class="meta-pill"><strong>鏡像網域：</strong>si.taiwan.gov.tw</span>
+            <span class="meta-pill"><strong>網域：</strong>sme.gov.tw（高權威）</span>
+          </div>
+          <p>社會創新平台由經濟部中小及新創企業署（SMESA）運營，是台灣社會創新組織的全國性資料庫與資源中心，與聯合國永續發展目標（SDGs）接軌。</p>
+          <p><strong>網站架構：</strong>5 個主選單群組、21 個靜態頁面，加上組織（<code>/Home/Org?Fid={id}</code>）與活動（<code>/Home/activity/{id}</code>）的程式化頁面。平台採用 JavaScript SPA 框架，伺服器端渲染（SSR）有缺口。</p>
+          <p><strong>核心發現：</strong>主網域 <code>startup.sme.gov.tw/sitaiwan/</code> 對所有爬蟲請求返回 HTTP 403，而鏡像網域 <code>si.taiwan.gov.tw</code> 可部分提供內容。這個雙網域問題是本平台最嚴重的 SEO 漏洞。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TECHNICAL SEO ── -->
+    <section id="technical" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-crit-bg); color:var(--c-crit)">⚙️</div>
+        <div class="section-title">技術 SEO</div>
+        <span class="section-score">15 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">主網域對所有機器人返回 HTTP 403 — Googlebot 無法爬取網站</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><strong>觀察：</strong><code>startup.sme.gov.tw/sitaiwan/</code> 上的每個 URL 對自動化請求都返回 HTTP 403。包括首頁、所有子頁面及所有程式化頁面，Googlebot 被完全封鎖。</p>
+          <p><strong>影響：</strong>即使頁面曾被快取或從鏡像網域索引，Google 也無法重新驗證內容、發現新頁面或更新排名。長期下去，所有已索引頁面將從搜尋結果中消失。</p>
+          <p><strong>根本原因推測：</strong>伺服器可能套用了 User-Agent 過濾或 IP 範圍封鎖，可能是防火牆規則、WAF 政策，或原本設計封鎖惡意機器人的設定誤傷了 Googlebot。</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>修復：</strong>在 WAF/防火牆規則中將 Googlebot 的 User-Agent 加入白名單</span>
+            <span class="meta-pill"><strong>驗證：</strong>修復後在 Search Console 使用「以 Google 身分擷取」</span>
+            <span class="meta-pill"><strong>成功指標：</strong>GSC 顯示首頁爬取成功</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">robots.txt 遺失 (404) — 未宣告爬取政策</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>https://startup.sme.gov.tw/sitaiwan/robots.txt</code> 返回 HTTP 404。沒有 robots.txt，爬蟲在路徑層級沒有任何爬取政策可遵循，加上網域層級的 403，爬蟲完全無從得知哪些內容可爬取。</p>
+          <p><strong>修復：</strong>在網域根目錄（或 <code>/sitaiwan/</code> 路徑層級）建立 <code>/robots.txt</code>，加入明確的 <code>User-agent: *</code>、<code>Allow: /</code> 指令，以及指向 XML Sitemap 的 <code>Sitemap:</code> 指令。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">無 XML Sitemap — Googlebot 無法發現所有頁面</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>/sitaiwan/sitemap.xml</code> 返回 403。目前只有 <code>/sitaiwan/sitemap</code> 的 HTML 網站地圖頁面，列出 21 個靜態 URL，但這個 HTML 網站地圖無法被 Googlebot 以機器方式讀取。</p>
+          <p>更嚴重的是，程式化頁面（<code>/Home/Org?Fid=*</code> 的組織頁面與 <code>/Home/activity/*</code> 的活動頁面）完全沒有被列入任何機器可讀的格式，這可能代表數百乃至數千個 Google 無法發現的頁面。</p>
+          <p><strong>修復：</strong>建立包含兩個子 Sitemap 的 Sitemap Index：一個針對靜態頁面，一個針對程式化頁面。加入 <code>&lt;lastmod&gt;</code> 和 <code>&lt;changefreq&gt;</code>，在 Google Search Console 登錄，並在 robots.txt 加入 <code>Sitemap:</code> 指令。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">JavaScript SPA 純前端渲染 — 內容對爬蟲不可見</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>列表頁面（<code>/Home/org_list</code>、<code>/Home/activity/list</code>）返回空白 HTML，組織資料庫和活動列表完全透過 JavaScript 客戶端載入。原始碼中可見未渲染的模板語法 <code>{{ language == 'en' ? 'Home' : '回首頁' }}</code>，確認框架（可能是 Vue.js 或 Angular）未對這些字串執行 SSR。</p>
+          <p><strong>影響：</strong>Googlebot 看到的是空白列表頁面，平台絕大多數可索引內容（數千個組織檔案和活動頁面）對搜尋引擎可能完全不可見。</p>
+          <p><strong>修復：</strong>為所有公開頁面實作伺服器端渲染（SSR）或靜態網站生成（SSG）。至少使用動態渲染（預先渲染）向 Googlebot 提供已渲染的 HTML。SSR 修復是所有頁面 SEO 優化能發揮效果的前提條件。</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>依賴關係：</strong>必須先修復，其他所有 SEO 工作才能發揮效果</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">相同內容分佈在兩個網域且無 canonical — 嚴重的重複內容風險</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>相同的平台內容同時出現在 <code>startup.sme.gov.tw/sitaiwan/</code> 和 <code>si.taiwan.gov.tw/</code>，兩個網域都未設置 canonical 標籤指向權威版本。Google 可能同時索引兩者、分散連結權益，並因重複內容而降低兩者的排名。</p>
+          <p><strong>修復：</strong>確定一個正式網域（建議使用 <code>startup.sme.gov.tw/sitaiwan/</code>，因其位於主要政府網域下）。從鏡像網域實施 301 轉址，或在鏡像網域每個頁面加入 <code>&lt;link rel="canonical"&gt;</code> 指向正式網域對應的 URL。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">導覽列章節標題不可爬取 — javascript:; 連結</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>5 個主選單群組標題（掌握資源、影響力變現、國際合作、BP 獎項申請、社創資料庫）使用 <code>href="javascript:;"</code>，不可被 Googlebot 爬取，也無法提供連結權益或爬取訊號。</p>
+          <p><strong>修復：</strong>將每個章節標題指向其主要子頁面，或實作連結至真實 URL 的正確下拉選單。例如「掌握資源」應連結到其最重要的子頁面。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">僅建議桌面瀏覽器 — 未宣告行動版優化</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>網站頁尾明確建議「使用桌上型電腦 Google Chrome 瀏覽，解析度 1024×768 以上」。Google 採用行動優先索引——若網站不支援行動裝置，排名將受到懲罰。這個建議說明網站並非為行動用戶設計。</p>
+          <p><strong>修復：</strong>對所有頁面類型進行行動版響應式審查。確保點擊目標達到最小 48×48px，文字無需縮放即可閱讀，內容在 390px 寬度的視窗不溢出。移除頁尾的桌面版建議。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ON-PAGE SEO ── -->
+    <section id="onpage" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-high-bg); color:var(--c-high)">📝</div>
+        <div class="section-title">頁面優化</div>
+        <span class="section-score">15 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">所有頁面均無 meta description — 搜尋摘要依賴 Google 自動生成</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>平台上沒有任何一個頁面設有 <code>&lt;meta name="description"&gt;</code> 標籤，包括首頁、列表頁、活動頁和組織頁面均已確認缺少。Google 將從頁面內容自動生成摘要，通常較不吸引人，且可能顯示無關文字。</p>
+          <p><strong>修復：</strong>為所有靜態頁面撰寫獨特的 meta description（150–160 字元）。程式化頁面使用模板，例如組織頁面：<code>{org_name}是台灣社會創新組織，專注於{sdg_category}。了解其社會影響力、採購資訊與聯絡方式。</code></p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>影響頁面：</strong>所有 21+ 靜態頁面及所有程式化頁面</span>
+            <span class="meta-pill"><strong>工作量：</strong>模板化——SSR 修復後每頁成本極低</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">通用頁面標題 — 每個頁面都是「社會創新平台 | Social Innovation - [Section]」</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>所有頁面遵循相同的標題模式：<code>社會創新平台 | Social Innovation - [章節名稱]</code>。例如：<code>社會創新平台 | Social Innovation - 2025 台灣 AI 產業年會</code>。雖然包含活動名稱，但缺少目標關鍵字、地理修飾語或能提升 SERP 點擊率的行動導向語言。</p>
+          <p><strong>修復：</strong>將標題結構反轉，以最具體、關鍵字豐富的詞語開頭。活動頁面：<code>2025 台灣 AI 產業年會 | 社會創新平台活動</code>；組織頁面：<code>{組織名稱} - 社會創新組織 | 社創平台</code>；首頁：<code>台灣社會創新平台 - SDGs 社創組織資料庫 | SMESA</code>。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">所有頁面均無 canonical 標籤 — 重複 URL 風險未受管控</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>沒有任何頁面設置 <code>&lt;link rel="canonical"&gt;</code> 標籤。這在以下情況特別危險：（1）雙網域問題；（2）如 <code>/Home/News?Fid=156</code> 等帶有參數的 URL 可能產生變體；（3）任何尾部斜線或 www/non-www 變體。</p>
+          <p><strong>修復：</strong>為所有頁面加入自我參照 canonical 標籤。帶有查詢字串的程式化頁面，canonical 指向乾淨 URL 版本。這是框架層級的修復，一次應用到所有頁面模板。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">無 Open Graph 或 Twitter Card 標籤 — 社群分享樣貌不佳</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>所有頁面均無 <code>og:title</code>、<code>og:description</code>、<code>og:image</code> 或 Twitter Card meta 標籤。當平台連結被分享到社群媒體（Facebook、LINE、Twitter/X）時，不會生成預覽卡片，只顯示純文字 URL。</p>
+          <p><strong>修復：</strong>為所有頁面加入 Open Graph 標籤。活動和組織頁面使用活動橫幅或組織 Logo 作為 <code>og:image</code>。最低要求：<code>og:title</code>、<code>og:description</code>、<code>og:image</code>、<code>og:url</code>、<code>og:type</code>、<code>og:locale</code>（設為 <code>zh_TW</code>），若有英文版加入 <code>og:locale:alternate</code>。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">所有頁面均無 HTML lang 屬性 — 缺少無障礙與 SEO 訊號</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><code>&lt;html&gt;</code> 元素沒有 <code>lang</code> 屬性，這既是無障礙問題（螢幕閱讀器無法推斷語言），也是 SEO 訊號——Google 使用 lang 屬性了解內容語言以進行區域定向。</p>
+          <p><strong>修復：</strong>在中文頁面的 <code>&lt;html&gt;</code> 元素加入 <code>lang="zh-TW"</code>，英文頁面加入 <code>lang="en"</code>。這是框架層級的修復。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">關鍵圖片缺少 alt 文字 — 首頁說明圖和網站 Logo</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>首頁「什麼是社會創新？」的說明圖片沒有 alt 文字。網站 Logo 在某些情境下也缺乏有意義的 alt 文字。活動橫幅圖片使用檔名（<code>1735531105438.jpg</code>）而非描述性文字作為 alt。</p>
+          <p><strong>修復：</strong>為所有有意義的圖片加入描述性 alt 文字。裝飾性圖片使用 <code>alt=""</code>。活動橫幅使用活動名稱和日期。Logo 使用「社會創新平台 - 經濟部中小及新創企業署」。SDG 說明圖描述視覺化內容所呈現的資訊。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">無麵包屑導覽 — 對 Google 傳達淺層網站結構訊號</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>網站使用扁平的工具導覽（回首頁 → 新手專區 → 網站導覽），深層頁面沒有情境麵包屑。活動頁面（如 <code>/Home/activity/3280</code>）沒有麵包屑顯示「首頁 → 活動看板 → 2025 AI 論壇」，對 UX 和 SEO 都是錯失的機會。</p>
+          <p><strong>修復：</strong>為所有分類和詳情頁面加入麵包屑導覽，搭配 BreadcrumbList JSON-LD（見結構化資料章節）。這也能啟用 Google 的麵包屑 SERP 功能。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CONTENT QUALITY ── -->
+    <section id="content" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-med-bg); color:var(--c-med)">📄</div>
+        <div class="section-title">內容品質</div>
+        <span class="section-score">40 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">首頁統計數字全部顯示零 — 內容在渲染前未載入</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>首頁「重點數據」區塊所有統計數字均顯示 0：社會創新組織（0）、合作企業（0）、就業人口、採購金額（0）。這表示資料透過 JavaScript 非同步載入，未在伺服器端渲染。</p>
+          <p><strong>影響：</strong>這些數字是展示平台規模的核心 E-E-A-T 訊號。Google 爬取頁面時看到的是零，削弱了可信度訊號；使用者初次載入看到零也會失去信任。</p>
+          <p><strong>修復：</strong>在伺服器端預先渲染這些統計數字。至少將最新數字直接嵌入 HTML 作為備用，JavaScript 再進行更新。HTML 原始碼中這些數字絕對不能是零。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">列表頁面段落內容重複 — 偵測到逐字重複</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>在組織資料庫頁面和活動列表頁面，合作企業說明段落和社會創新組織說明段落各出現兩次，完全一字不差。這造成頁面內重複內容，徒增內容篇幅卻無附加價值。</p>
+          <p><strong>修復：</strong>審查所有模板元件是否有重複渲染的情況，原因很可能是某個元件在頁面模板中被引入了兩次。移除重複的實例。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">重要政策文件僅提供 PDF — 內容對搜尋引擎不可見</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>社創方案 2.0 及其英文版僅提供可下載的 PDF，雖然 Google 可以索引 PDF，但其 SEO 效果遠不如網頁。這份內容詳述台灣國家社會創新策略，對研究人員、記者和國際組織具有很高的搜尋潛力。</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill">社創方案2.0摘要.pdf</span>
+            <span class="meta-pill">Social_Innovation_Action_Plan_2.0_Summary.pdf</span>
+          </div>
+          <p><strong>修復：</strong>為這些文件建立帶有適當標題、章節和錨點連結的網頁版本，保留 PDF 下載作為次要選項。網頁版本將為這些文件所涉及的長尾查詢贏得排名。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">SDGs 診斷測驗需要登入 — 封閉內容阻礙自然搜尋流量</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>「SDGs 社創小將診斷測驗」需要會員登入。這個受歡迎的互動工具對搜尋引擎和尚未註冊的新訪客完全不可見，是自然流量獲取的重大損失。</p>
+          <p><strong>修復：</strong>為診斷測驗建立公開預覽或著陸頁面，包含足夠的 SEO 內容以在 SDG 相關查詢中排名。測驗本身可以繼續設門檻，但入口頁面應可被索引並有吸引人的 meta 標籤。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">低</span>
+          <span class="finding-title">已結束活動仍被索引，缺乏明確的封存策略</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>已過去的活動頁面（標記「已結束」）仍然完全被索引，例如 2025 年 AI 產業年會活動頁面仍可存取。保留過去活動是合理的，但這些頁面缺乏明確的常青內容策略。</p>
+          <p><strong>修復：</strong>在過去活動頁面加入結構化資料標記（使用 <code>eventStatus: EventScheduled</code> 加上過去日期，而非 <code>EventCancelled</code>）。考慮在過去活動頁面加入「相關即將到來的活動」區塊，以降低跳出率並增加內部連結價值。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SCHEMA ── -->
+    <section id="schema" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-low-bg); color:var(--c-low)">🏷️</div>
+        <div class="section-title">結構化資料</div>
+        <span class="section-score">5 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">整個網站無結構化資料 — 任何地方都找不到 JSON-LD</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>平台上沒有任何頁面實作任何形式的結構化資料（JSON-LD、Microdata 或 RDFa）。對於擁有豐富、結構化內容類型的政府平台而言，這是重大的錯失機會。</p>
+          <p><strong>依頁面類型建議的 Schema 實作：</strong></p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>首頁：</strong>Organization、WebSite、GovernmentOrganization</span>
+            <span class="meta-pill"><strong>活動頁面：</strong>Event（含 EventScheduled、startDate、endDate、location）</span>
+            <span class="meta-pill"><strong>組織頁面：</strong>Organization 或 LocalBusiness 子類型</span>
+            <span class="meta-pill"><strong>所有頁面：</strong>BreadcrumbList、WebPage</span>
+          </div>
+          <p><strong>活動頁面 JSON-LD 範例：</strong></p>
+          <p><code>{"@type":"Event","name":"2025台灣AI產業年會","startDate":"2025-01-22","location":{"@type":"Place","address":{"@type":"PostalAddress","addressLocality":"台北市","streetAddress":"羅斯福路四段85號"}},"organizer":{"@type":"Organization","name":"台灣人工智慧實驗室"},"eventStatus":"https://schema.org/EventScheduled"}</code></p>
+          <p>實作 Event Schema 可在 SERP 顯示 Google 活動豐富結果，是這類平台最直接的流量驅動器。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">未宣告政府組織實體 — 錯失 Google 知識面板機會</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>平台沒有 <code>GovernmentOrganization</code> 或 <code>Organization</code> Schema 宣告發布者身份（SMESA / 經濟部中小及新創企業署）。沒有這個宣告，Google 無法確信地將平台與其組織實體關聯，錯失潛在的知識面板。</p>
+          <p><strong>修復：</strong>在首頁加入：</p>
+          <p><code>{"@type":"GovernmentOrganization","name":"經濟部中小及新創企業署","alternateName":"SMESA","url":"https://startup.sme.gov.tw/","parentOrganization":{"@type":"GovernmentOrganization","name":"經濟部"},"contactPoint":{"@type":"ContactPoint","telephone":"+886-2-2586-5000","email":"sitaiwan@sme.gov.tw"},"sameAs":["https://www.sme.gov.tw/"]}</code></p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">BreadcrumbList Schema 缺失 — 無法使用麵包屑 SERP 功能</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>不存在 BreadcrumbList 結構化資料。加上缺乏可見的麵包屑導覽，Google 無法在搜尋結果中顯示麵包屑，而 SERP 中的麵包屑透過展示內容層級結構可提升點擊率。</p>
+          <p><strong>修復：</strong>在所有分類和詳情頁面實作 BreadcrumbList JSON-LD，與視覺麵包屑導覽同步。活動頁面範例：<code>首頁 → 活動看板 → [活動名稱]</code>。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── AI SEARCH ── -->
+    <section id="ai" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--accent-lt); color:var(--accent)">🤖</div>
+        <div class="section-title">AI 搜尋整備度 (GEO)</div>
+        <span class="section-score">10 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">嚴重</span>
+          <span class="finding-title">AI 爬蟲遭封鎖 — Googlebot 及所有 AI 代理程式無法存取任何內容</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>封鎖 Googlebot 的相同 HTTP 403 也封鎖了 AI 內容爬蟲（GPTBot、ClaudeBot、Applebot、PerplexityBot 等），這意味著在有關台灣社會創新、SDGs 和社會企業的 AI 生成答案中，本平台內容完全缺席。</p>
+          <p><strong>影響：</strong>當使用者向 ChatGPT、Perplexity、Google AI Overviews 或 Claude 詢問「台灣社會創新」或「Taiwan social enterprise organizations」時，本平台不會出現在引用來源中。</p>
+          <p><strong>修復：</strong>解決 403 問題後，在 robots.txt 中明確允許有益的 AI 爬蟲，只封鎖具攻擊性或未知的機器人。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">無 llms.txt 檔案 — 平台無法向 AI 代理程式宣告自身</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>網域上不存在 <code>/llms.txt</code>。這個新興標準讓 AI 代理程式了解網站的內容性質及如何適當使用其內容。對於希望被 AI 系統引用的政府平台，這是投入少、訊號價值高的改善。</p>
+          <p><strong>修復：</strong>建立 <code>https://startup.sme.gov.tw/llms.txt</code>，簡要描述平台、資料類型、預期用途及授權聯絡方式。範例：</p>
+          <p><code># Social Innovation Platform — Taiwan<br>社會創新平台 is operated by SMESA (Ministry of Economic Affairs, Taiwan). It provides a database of social innovation organizations, events, and resources aligned with the UN SDGs.<br><br>## Organization database<br>Detailed profiles of 1000+ social innovation organizations in Taiwan.<br><br>## Allowed uses<br>Citation, research, journalism, non-commercial use.</code></p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">無 Markdown 交付端點 — AI 代理程式偏好結構化文字格式</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>平台僅提供 HTML（或因 403 完全無內容）。偏好乾淨 Markdown 或 JSON 格式的 AI 爬蟲無法有效處理本網站。</p>
+          <p><strong>修復：</strong>建立 <code>/llms-full.txt</code>，或在關鍵頁面（組織檔案、政策文件）實作 <code>Accept: text/markdown</code> 內容協商。或者，為組織資料庫公開 JSON API 端點，供 AI 代理程式參考。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── I18N / HREFLANG ── -->
+    <section id="i18n" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:#f3e8ff; color:#8b5cf6">🌐</div>
+        <div class="section-title">多語系 / Hreflang</div>
+        <span class="section-score">10 / 100</span>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高</span>
+          <span class="finding-title">未實作 hreflang — 雙語網站在英文搜尋結果中不可見</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>平台同時擁有中文（zh-TW）和英文內容（由英文 PDF 下載和雙語導覽標籤確認），但所有頁面均無 hreflang 標籤。沒有 hreflang，Google 對中英文搜尋者提供相同的 URL，英文版可能在英文搜尋結果中被壓制。</p>
+          <p><strong>修復：</strong>確認是否存在平行英文 URL 結構（例如 <code>/sitaiwan/en/</code>）。若存在，在所有雙語頁面實作 hreflang：</p>
+          <p><code>&lt;link rel="alternate" hreflang="zh-TW" href="https://startup.sme.gov.tw/sitaiwan/Home/activity/3280"&gt;</code><br><code>&lt;link rel="alternate" hreflang="en" href="https://startup.sme.gov.tw/sitaiwan/en/Home/activity/3280"&gt;</code><br><code>&lt;link rel="alternate" hreflang="x-default" href="https://startup.sme.gov.tw/sitaiwan/Home/activity/3280"&gt;</code></p>
+          <p>若不存在平行英文 URL 結構，則建立一個。平台的國際抱負（APSI Summit、海外拓展）使英文 SEO 具有重要意義。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">中</span>
+          <span class="finding-title">Vue/Angular 模板字串在 HTML 原始碼中可見 — 語言在渲染時未解析</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>導覽標籤包含未渲染的模板表達式：<code>{{ language == 'en' ? 'Home' : '回首頁' }}</code>，在頁面原始碼中以原始 JavaScript 模板語法可見，表示語言偵測邏輯在客戶端執行，而非在伺服器或 SSR 階段解析。</p>
+          <p><strong>影響：</strong>爬蟲將模板語法視為字面文字內容，這使爬取的文字被程式碼殘留污染，並向 Google 傳遞網站內容不可靠的訊號。</p>
+          <p><strong>修復：</strong>確保所有語言條件字串在 SSR 階段、HTML 傳送給客戶端之前完成解析。模板表達式絕不應出現在已交付的 HTML 中。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">低</span>
+          <span class="finding-title">新聞版塊使用查詢字串 URL — /Home/News?Fid=156 不利 SEO</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>新聞分類的導覽項目使用 <code>/Home/News?Fid=156</code> 而非乾淨 URL（如 <code>/Home/news/social-innovation</code>）。查詢字串 URL 雖可爬取，但 SEO 友善度較低，且 canonical 管理較困難。</p>
+          <p><strong>修復：</strong>盡可能將查詢字串參數映射到乾淨 URL 路徑，在伺服器端實作 URL 改寫。若乾淨 URL 不可行，確保 canonical 標籤明確處理每個查詢字串變體。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── STRENGTHS ── -->
+    <section id="positives" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-pos-bg); color:var(--c-pos)">✅</div>
+        <div class="section-title">值得保留的優勢</div>
+      </div>
+
+      <div class="positive-grid">
+        <div class="pos-item">
+          <span class="pos-icon">🔒</span>
+          <div>
+            <div class="pos-text">已啟用 HTTPS</div>
+            <div class="pos-sub">所有 URL 透過 HTTPS 提供，未偵測到混合內容問題</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">♿</span>
+          <div>
+            <div class="pos-text">AA 無障礙認證</div>
+            <div class="pos-sub">平台持有數位部 moda.gov.tw 頒發的台灣政府 AA 無障礙認證</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">🏛️</span>
+          <div>
+            <div class="pos-text">高權威政府網域</div>
+            <div class="pos-sub">sme.gov.tw 在 Google 具有顯著的網域權威和信任訊號</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">⌨️</span>
+          <div>
+            <div class="pos-text">跳過導覽連結</div>
+            <div class="pos-sub">正確實作 #mainContent 跳過連結——無障礙和技術 SEO 的最佳實踐</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📋</span>
+          <div>
+            <div class="pos-text">提供 HTML 網站地圖</div>
+            <div class="pos-sub">/sitaiwan/sitemap 的人類可讀網站地圖以分類方式列出所有 21 個主要頁面</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📜</span>
+          <div>
+            <div class="pos-text">明確的內容授權</div>
+            <div class="pos-sub">明顯展示 CC BY-NC-ND 3.0 台灣授權——向 AI 和爬蟲傳達內容再利用政策</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">🌏</span>
+          <div>
+            <div class="pos-text">國際拓展內容</div>
+            <div class="pos-sub">APSI Summit 專區和國際合作內容創造自然反向連結機會</div>
+          </div>
+        </div>
+        <div class="pos-item">
+          <span class="pos-icon">📞</span>
+          <div>
+            <div class="pos-text">完整的聯絡資訊</div>
+            <div class="pos-sub">頁尾提供多個聯絡管道——搭配 Schema 標記後是強烈的 E-E-A-T 訊號</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ACTION PLAN ── -->
+    <section id="actions" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--bg-subtle); color:var(--fg)">🎯</div>
+        <div class="section-title">優先行動計畫</div>
+      </div>
+
+      <p style="font-size:13px;color:var(--fg-muted);margin-bottom:4px;">行動依依賴關係排序——後項需要前項完成才能發揮完整效果。先修復爬取能力；機器人被封鎖時，頁面和內容工作毫無意義。</p>
+
+      <div class="action-table">
+        <div class="action-row header">
+          <div>#</div>
+          <div>行動</div>
+          <div style="text-align:center">難度</div>
+          <div style="text-align:center">影響</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">01</div>
+          <div>
+            <div class="action-title">修復 HTTP 403 — 在 WAF/防火牆將 Googlebot 加入白名單</div>
+            <div class="action-title sub">解除所有後續 SEO 工作的封鎖。用 Google Search Console「檢查 URL」驗證。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-crit">嚴重</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">02</div>
+          <div>
+            <div class="action-title">為所有公開頁面實作 SSR</div>
+            <div class="action-title sub">meta 標籤、結構化資料和內容被索引的前提。解決模板佔位符渲染問題。</div>
+          </div>
+          <div class="action-effort effort-high">高</div>
+          <div class="action-impact impact-crit">嚴重</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">03</div>
+          <div>
+            <div class="action-title">解決雙網域重複內容</div>
+            <div class="action-title sub">301 轉址 si.taiwan.gov.tw → startup.sme.gov.tw/sitaiwan/，或在鏡像網域加入 canonical 標籤。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-crit">嚴重</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">04</div>
+          <div>
+            <div class="action-title">建立 robots.txt + XML Sitemap Index</div>
+            <div class="action-title sub">涵蓋所有靜態和程式化 URL。在 GSC 登錄 Sitemap。加入 Sitemap: 指令。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">05</div>
+          <div>
+            <div class="action-title">為所有頁面加入 meta description（模板化）</div>
+            <div class="action-title sub">為組織和活動頁面類型撰寫模板，為 21 個靜態頁面撰寫獨特描述。</div>
+          </div>
+          <div class="action-effort effort-med">中</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">06</div>
+          <div>
+            <div class="action-title">加入 html lang="zh-TW"、canonical 和 Open Graph 標籤</div>
+            <div class="action-title sub">框架層級修復，同時應用到所有頁面模板。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">07</div>
+          <div>
+            <div class="action-title">實作 JSON-LD：Event、Organization、BreadcrumbList</div>
+            <div class="action-title sub">活動頁面的 Event Schema 啟用 Google 活動豐富結果。首頁加入 GovernmentOrganization。</div>
+          </div>
+          <div class="action-effort effort-med">中</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">08</div>
+          <div>
+            <div class="action-title">實作 zh-TW / en 的 hreflang 語言定向</div>
+            <div class="action-title sub">若不存在則建立平行英文 URL 結構，在所有雙語頁面加入 hreflang。</div>
+          </div>
+          <div class="action-effort effort-high">高</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">09</div>
+          <div>
+            <div class="action-title">改寫 title 標籤模板 — 關鍵字優先結構</div>
+            <div class="action-title sub">以具體實體名稱開頭，加入地理修飾語，以品牌名結尾。提升 SERP 點擊率。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-med">中</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">10</div>
+          <div>
+            <div class="action-title">建立 llms.txt + 在 robots.txt 允許 AI 爬蟲</div>
+            <div class="action-title sub">讓 ChatGPT、Perplexity、Google AI Overviews 在台灣社會創新查詢中引用本平台。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-med">中</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">11</div>
+          <div>
+            <div class="action-title">修復所有頁面類型的圖片 alt 文字</div>
+            <div class="action-title sub">優先：首頁說明圖、活動橫幅、Logo。使用描述性文字，而非檔名。</div>
+          </div>
+          <div class="action-effort effort-low">低</div>
+          <div class="action-impact impact-med">中</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">12</div>
+          <div>
+            <div class="action-title">伺服器端預先渲染統計數字 + 移除重複段落</div>
+            <div class="action-title sub">首頁重點數字在 HTML 中絕不能為零。修復列表頁面的模板重複問題。</div>
+          </div>
+          <div class="action-effort effort-med">中</div>
+          <div class="action-impact impact-med">中</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">13</div>
+          <div>
+            <div class="action-title">為重要 PDF 文件建立網頁版本</div>
+            <div class="action-title sub">將社創方案 2.0（中英文）製作成正式網頁內容，具有高長尾搜尋價值。</div>
+          </div>
+          <div class="action-effort effort-med">中</div>
+          <div class="action-impact impact-med">中</div>
+        </div>
+        <div class="action-row">
+          <div class="action-num">14</div>
+          <div>
+            <div class="action-title">行動版響應式審查 + 移除桌面版專屬建議</div>
+            <div class="action-title sub">Google 行動優先索引要求完整行動版相容性。在 390px 寬度視窗測試所有頁面類型。</div>
+          </div>
+          <div class="action-effort effort-high">高</div>
+          <div class="action-impact impact-high">高</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TRAFFIC STRATEGIES ── -->
+    <section id="traffic" class="section">
+      <div class="section-head">
+        <div class="section-icon" style="background:var(--c-pos-bg); color:var(--c-pos)">📈</div>
+        <div class="section-title">十、增加流量的具體策略</div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-crit">先決條件</span>
+          <span class="finding-title">第一層：先修技術問題（所有流量策略的前置條件）</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>在 Googlebot 仍被封鎖的情況下，任何內容優化都無法發揮效果。必須依序完成：</p>
+          <div class="meta-pill-row">
+            <span class="meta-pill"><strong>Step 1</strong> 解除 HTTP 403 → 讓 Google 能爬取網站</span>
+            <span class="meta-pill"><strong>Step 2</strong> 實作 SSR → 讓 Google 看見資料庫內容</span>
+            <span class="meta-pill"><strong>Step 3</strong> 建立 XML Sitemap → 告訴 Google 有哪些頁面</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-high">高優先</span>
+          <span class="finding-title">搜尋流量 — 最大來源，Event Schema 可提升 CTR 20–40%</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <div class="action-table" style="margin-top:10px">
+            <div class="action-row header"><div>策略</div><div>預期效果</div></div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">每個活動頁加上 Event Schema</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">Google SERP 顯示活動卡片，CTR 提升 20–40%</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">組織頁面加 meta description</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">搜尋摘要更吸引人，CTR 明顯提升</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">政策 PDF 改成網頁版本</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">「台灣社會創新」、「SDGs 組織」長尾關鍵字可排名</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">製作每個 SDG 目標的專題頁</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">例：「SDG 1 消除貧窮 台灣組織」→ 大量長尾流量</div>
+            </div>
+            <div class="action-row" style="grid-template-columns:1fr 1fr">
+              <div><div class="action-title">建立分類目錄 SEO 頁面</div></div>
+              <div style="color:var(--fg-muted);font-size:12px">依 SDG、縣市、產業別建立可索引的分類頁</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-med">新興管道</span>
+          <span class="finding-title">AI 搜尋流量 — ChatGPT / Perplexity / Google AI Overviews 目前完全缺席</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>加上 <code>llms.txt</code> + 開放 AI 爬蟲（GPTBot、PerplexityBot），當使用者詢問「台灣社會創新組織有哪些？」時，本平台才會出現在 AI 生成答案的引用來源中。</p>
+          <p>目前因 HTTP 403 封鎖，所有 AI 爬蟲都無法存取本平台。解除 403 後，只需新增 <code>llms.txt</code> 並在 robots.txt 允許 AI 爬蟲，即可開始被 AI 系統引用。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">國際流量</span>
+          <span class="finding-title">英語國際流量 — hreflang + APSI Summit 英文 SEO</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p><strong>短期：</strong>加 hreflang 標籤（zh-TW / en），讓英文搜尋者找到英文版頁面。</p>
+          <p><strong>中期：</strong>APSI Summit 內容做英文 SEO → 吸引東南亞、日韓的社會創新研究者；SDG 報告英文版製作為網頁 → 吸引國際研究機構、NGO、記者引用。</p>
+          <p><strong>長期：</strong>主動向 UNDP、UN SDG Hub 申請資源頁引用；發布年度台灣社會創新生態系報告 → 媒體與學術引用形成自然反向連結。</p>
+        </div>
+      </div>
+
+      <div class="finding">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-low">社群流量</span>
+          <span class="finding-title">社群分享流量 — Open Graph 標籤是最快的改善</span>
+          <span class="finding-chevron">▶</span>
+        </div>
+        <div class="finding-body">
+          <p>加 Open Graph 標籤後，分享到 Facebook / LINE 時顯示預覽圖卡（目前分享只有裸 URL）。這是一個前端修改一次 template，所有頁面立即生效的改善。</p>
+          <p>活動頁面可加入「分享此活動」按鈕，降低分享摩擦，擴大社群觸及。</p>
+        </div>
+      </div>
+
+      <div class="finding open">
+        <div class="finding-head" onclick="toggle(this)">
+          <span class="priority-badge pb-pos">快速見效</span>
+          <span class="finding-title">最快見效的三件事 — 2 週內可啟動</span>
+          <span class="finding-chevron">▼</span>
+        </div>
+        <div class="finding-body">
+          <div class="action-table" style="margin-top:10px">
+            <div class="action-row header"><div>#</div><div>行動</div><div>預期效果</div><div>時程</div></div>
+            <div class="action-row">
+              <div class="action-num">1</div>
+              <div><div class="action-title">解除 403 封鎖</div><div class="action-title sub">工程師設定防火牆規則</div></div>
+              <div class="action-impact impact-crit">2週內 Google 重新爬取</div>
+              <div class="action-effort effort-low">立即</div>
+            </div>
+            <div class="action-row">
+              <div class="action-num">2</div>
+              <div><div class="action-title">加 meta description</div><div class="action-title sub">內容人員可執行</div></div>
+              <div class="action-impact impact-high">直接提升 SERP CTR</div>
+              <div class="action-effort effort-low">1 週</div>
+            </div>
+            <div class="action-row">
+              <div class="action-num">3</div>
+              <div><div class="action-title">加 Open Graph 標籤</div><div class="action-title sub">前端修改一次 template</div></div>
+              <div class="action-impact impact-high">所有頁面立即有社群預覽卡</div>
+              <div class="action-effort effort-low">1 週</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Footer -->
+    <div class="report-footer">
+      <div>報告由 Claude Code 生成 · <a href="https://startup.sme.gov.tw/sitaiwan/" target="_blank" rel="noopener">startup.sme.gov.tw/sitaiwan/</a> · 2026 年 11 月 8 日</div>
+      <div style="margin-top:4px;font-size:11px;">分析基於直接 HTTP 探測、Google 搜尋索引資料及鏡像網域內容檢查（si.taiwan.gov.tw）。由於 HTTP 403 封鎖直接 CWV 量測，效能分數為估算值。</div>
+      <div class="community-block">
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━<br>
+        Built by agricidaniel. Join the AI Marketing Hub community<br>
+        🆓 Free → <a href="https://www.skool.com/ai-marketing-hub" target="_blank" rel="noopener">skool.com/ai-marketing-hub</a> &nbsp;|&nbsp;
+        ⚡ Pro → <a href="https://www.skool.com/ai-marketing-hub-pro" target="_blank" rel="noopener">skool.com/ai-marketing-hub-pro</a><br>
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+function toggle(head) {
+  head.closest('.finding').classList.toggle('open');
+}
+
+function scrollTo(e, id) {
+  e.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  e.currentTarget.classList.add('active');
+}
+
+// Highlight active nav on scroll
+const sections = ['overview','technical','onpage','content','schema','ai','i18n','positives','actions','traffic'];
+const navItems = document.querySelectorAll('.nav-item');
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.id;
+      navItems.forEach(n => {
+        n.classList.toggle('active', n.getAttribute('href') === '#' + id);
+      });
+    }
+  });
+}, { threshold: 0.3, rootMargin: '-10% 0px -60% 0px' });
+
+sections.forEach(id => {
+  const el = document.getElementById(id);
+  if (el) obs.observe(el);
+});
+
+// Open first finding in overview by default
+document.querySelector('.finding .finding-head')?.click();
+</script>
+
+</body></html>
